@@ -22,7 +22,7 @@ contract Lottery {
 
     enum BlockStatus {Checkable, NotRevealed, BlockLimitPassed}
     enum BettingResult {Fail, Win, Draw}
-    event BET(uint256 index, address bettor, uint256 amount, byte challenges, uint256 answerBlockNumber);
+    event BET(uint256 index, address indexed bettor, uint256 amount, byte challenges, uint256 answerBlockNumber);
     event WIN(uint256 index, address bettor, uint256 amount, byte challenges, byte answer, uint256 answerBlockNumber);
     event FAIL(uint256 index, address bettor, uint256 amount, byte challenges, byte answer, uint256 answerBlockNumber);
     event DRAW(uint256 index, address bettor, uint256 amount, byte challenges, byte answer, uint256 answerBlockNumber);
@@ -33,8 +33,9 @@ contract Lottery {
         owner = msg.sender;
     }
 
-    function getPot() public view returns (uint256 pot) {  //smart contract 안의 변수를 확인하는 함수엔 view가 들어가야함 
-        return _pot;    }
+    function getPot() public view returns (uint256 pot) {
+        return _pot;
+    }
 
 
     /**
